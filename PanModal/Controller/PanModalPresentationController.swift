@@ -175,7 +175,11 @@ open class PanModalPresentationController: UIPresentationController {
     override public func presentationTransitionWillBegin() {
 
         guard let containerView = containerView
-            else { return }
+             else { return }
+
+        if self.panContainerView.frame == .zero {
+            self.adjustPresentedViewFrame()
+        }
 
         layoutBackgroundView(in: containerView)
         layoutPresentedView(in: containerView)
